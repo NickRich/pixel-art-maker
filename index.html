@@ -26,7 +26,6 @@
         .cell {
             display: flex;
             flex-direction: row;
-            border: 1px solid black;
             width: 1.56%;
             height: 15px;
             margin: 0px;
@@ -120,13 +119,16 @@
             for (let j = 0; j < 64; j++) {
                 let currentDiv = document.createElement("div");
                 currentDiv.className = "cell";
+                currentDiv.style.border = "1px solid black";
                 currentDiv.addEventListener("mouseover", function ChangeColorDrag(e) {
                     if (mouseDown === true) {
                         this.style.backgroundColor = currentColor;
+                        this.style.borderColor = currentColor;
                     }
                 });
                 currentDiv.addEventListener("click", function ChangeColor(e) {
                     this.style.backgroundColor = currentColor;
+                    this.style.borderColor = currentColor;
                 });
                 currentRow.appendChild(currentDiv);
             }
