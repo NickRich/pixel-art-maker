@@ -10,6 +10,13 @@
             border-radius: 5%;
         }
 
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
         .canvas {
             display: flex;
             flex-direction: column;
@@ -26,7 +33,8 @@
         .cell {
             display: flex;
             flex-direction: row;
-            width: 1.56%;
+            flex-grow: 1;
+            width: 3.12%;
             height: 15px;
             margin: 0px;
         }
@@ -112,11 +120,11 @@
         console.log("ready!");
         let currentColor = "black";
         let mouseDown = false;
-        for (let i = 0; i < 16; i++) {
+        for (let i = 0; i < 32; i++) {
             let currentRow = document.createElement("div");
             currentRow.className = "row";
             document.getElementById("canvas").appendChild(currentRow);
-            for (let j = 0; j < 64; j++) {
+            for (let j = 0; j < 32; j++) {
                 let currentDiv = document.createElement("div");
                 currentDiv.className = "cell";
                 currentDiv.style.border = "1px solid black";
@@ -144,15 +152,16 @@
             mouseDown = false;
         }
 
-        function ChangeColor(item) {
-            item.style.backgroundColor = currentColor;
-        }
-
-
-
         function ChooseColor(item) {
             currentColor = item.style.backgroundColor;
             document.getElementById("selectedColor").style.backgroundColor = currentColor;
+        }
+
+        function clearImage(item) {
+            document.getElementsByClassName("cell").forEach(element => {
+                element.style.backgroundColor = "white";
+                element.style.border = "1px solid black";
+            });
         }
     </script>
 </body>
